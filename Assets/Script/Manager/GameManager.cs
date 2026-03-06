@@ -7,7 +7,7 @@ using System.Runtime.ConstrainedExecution;
 
 public class GameManager : MonoBehaviour
 {
-    private int money;
+    private int money=0;
     private const int moneyExchange = 10;
     public int Money => money;
     public static event Action<int> OnMoneyChanged;

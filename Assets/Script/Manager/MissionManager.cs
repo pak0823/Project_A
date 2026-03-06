@@ -24,10 +24,10 @@ public class MissionManager : MonoBehaviour
     {
         Shared.MissionManager = this;
 
-        // 1) 현재 스테이지 번호 가져오기
+        //현재 스테이지 번호 가져오기
         int stage = StageData.CurrentStageNum;
 
-        // 2) 배열 범위 체크 후 목표치/시간 할당
+        //배열 범위 체크 후 목표치/시간 할당
         if (stage >= 0 && stage < stageTargetCoinCounts.Length)
             targetCoinCount = stageTargetCoinCounts[stage];
         else
@@ -38,16 +38,8 @@ public class MissionManager : MonoBehaviour
         else
             Debug.LogWarning($"Stage {stage} 에 대한 missionTime 미설정, 기본 0 사용.");
 
-        // 3) 미션 시작
+        //미션 시작
         StartMission();
-    }
-
-    public void StartMission()
-    {
-        currentCoinCount = 0;
-        remainingTime = missionTime;
-        isMissionActive = true;
-        isMissionEnded = false;
     }
 
     private void Update()
@@ -61,6 +53,14 @@ public class MissionManager : MonoBehaviour
             EndMission(false);
         }
             
+    }
+
+    public void StartMission()
+    {
+        currentCoinCount = 0;
+        remainingTime = missionTime;
+        isMissionActive = true;
+        isMissionEnded = false;
     }
 
     public void OnCoinCollected()
